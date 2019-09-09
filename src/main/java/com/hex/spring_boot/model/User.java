@@ -9,9 +9,6 @@ public class User implements Serializable {
     private Long id;
     private String userName;
     private String passWord;
-
-
-
     private int userSex;
     private String nickName;
 

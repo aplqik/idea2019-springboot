@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.hex.spring_boot.mapper.HelloWorldMapper" >
-    <select id="listAll" resultType="User">
+    <resultMap id="user" type="com.hex.spring_boot.model.User">
+        <id property="id" column="id"/>
+        <result property="userName" column="userName"/>
+        <result property="passWord" column="passWord"/>
+        <result property="userSex" column="user_sex"/>
+        <result property="nickName" column="nick_name"/>
+    </resultMap>
+    <select id="listAll" resultType="user" >
 
             select *  FROM users;
     </select>
+
+    <insert id="insertUser" parameterType="user" keyProperty="id" useGeneratedKeys="true">
+            insert  into users (userName,passWord,user_sex,nick_name) values
+            (#{userName},#{passWord},#{userSex},#{nickName});
+    </insert>
 </mapper>
